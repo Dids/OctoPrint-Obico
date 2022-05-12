@@ -117,6 +117,15 @@ class WebcamStreamer:
             return
 
     def video_pipeline(self):
+        # TODO: Figure out a better env var name and figure out if we need to actually connect to something or not
+        if os.environ.get('OBICO_EXTERNAL_STREAMING', False):
+            # TODO: Figure out how we'd want to hook up the remote ffmpeg + janus streams etc.
+            _logger.warning('External streaming mode detected. Skipping standard video pipeline.')
+            not_using_pi_camera()
+            self.bitrate = 20000000
+            self.compat_streaming = True
+            return
+
         if not pi_version():
             _logger.warning('Not running on a Pi. Quiting video_pipeline.')
             return

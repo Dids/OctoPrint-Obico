@@ -124,7 +124,7 @@ class WebcamStreamer:
             not_using_pi_camera()
             # self.bitrate = 20000000
             self.bitrate = 2000000
-            self.compat_streaming = True
+            # self.compat_streaming = True
             return
 
         if not pi_version():

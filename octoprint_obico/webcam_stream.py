@@ -122,7 +122,8 @@ class WebcamStreamer:
             # TODO: Figure out how we'd want to hook up the remote ffmpeg + janus streams etc.
             _logger.warning('External streaming mode detected. Skipping standard video pipeline.')
             not_using_pi_camera()
-            self.bitrate = 20000000
+            # self.bitrate = 20000000
+            self.bitrate = 2000000
             self.compat_streaming = True
             return
 

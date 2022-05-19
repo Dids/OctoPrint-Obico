@@ -124,7 +124,7 @@ class WebcamStreamer:
             not_using_pi_camera()
             # self.bitrate = 20000000
             self.bitrate = 2000000
-            # self.compat_streaming = True
+            self.compat_streaming = True
             # FIXME: While this works, the WebRTC/Janus stream is still constantly buffering,
             #        even with an extremely low bitrate and lower resolution, so we're missing something?
             return

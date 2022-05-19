@@ -209,6 +209,8 @@ class WebcamStreamer:
         self.compat_streaming = True
 
     def start_ffmpeg(self, ffmpeg_args, via_wrapper=False):
+        _logger.debug('Starting ffmpeg with Janus server {} and args: {}'.format(
+            JANUS_SERVER, ffmpeg_args))
         ffmpeg_cmd = '{} {} -bsf dump_extra -an -f rtp rtp://{}:8004?pkt_size=1300'.format(FFMPEG, ffmpeg_args, JANUS_SERVER)
 
         _logger.debug('Popen: {}'.format(ffmpeg_cmd))

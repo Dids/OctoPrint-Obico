@@ -120,7 +120,7 @@ class WebcamStreamer:
         # TODO: Figure out a better env var name and figure out if we need to actually connect to something or not
         if os.environ.get('OBICO_EXTERNAL_STREAMING', False):
             # TODO: Figure out how we'd want to hook up the remote ffmpeg + janus streams etc.
-            _logger.warning('External streaming mode detected. Skipping standard video pipeline.')
+            _logger.warning('External streaming mode detected. Skipping standard video pipeline. Janus server is set to {}.'.format(JANUS_SERVER))
             not_using_pi_camera()
             # self.bitrate = 20000000
             self.bitrate = 2000000

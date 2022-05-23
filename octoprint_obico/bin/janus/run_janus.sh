@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+set -x
+
 JANUS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 _term() {

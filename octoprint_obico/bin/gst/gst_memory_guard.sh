@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 while true; do
   sleep 5
   gstPid=$(pgrep gst-launch-1.0)

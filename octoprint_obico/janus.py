@@ -78,13 +78,14 @@ class JanusConn:
                 elif not self.shutting_down:
                     self.janus_proc.wait()
                     msg = 'Janus quit! This should not happen. Exit code: {}'.format(self.janus_proc.returncode)
-                    msg += '\nstdout:'.join(self.janus_proc.stdout.readlines())
-                    msg += '\nstderr:'.join(self.janus_proc.stderr.readlines())
-                    # for line in self.janus_proc.stdout:
-                    #     msg += line
-                    # msg += '\nstderr: '
-                    # for line in self.janus_proc.stderr:
-                    #     msg += line
+                    # msg += '\nstdout:'.join(self.janus_proc.stdout.readlines())
+                    # msg += '\nstderr:'.join(self.janus_proc.stderr.readlines())
+                    msg += '\nstdout: '
+                    for line in self.janus_proc.stdout:
+                        msg += line
+                    msg += '\nstderr: '
+                    for line in self.janus_proc.stderr:
+                        msg += line
                     self.plugin.sentry.captureMessage(msg, tags=get_tags())
                     janus_backoff.more(Exception(msg))
                     self.janus_proc = subprocess.Popen(janus_cmd.split(), stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
